@@ -1,0 +1,20 @@
+{
+  "name": "utterances-oauth",
+  "version": "0.1.0",
+  "description": "GitHub OAuth server for utterances",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "cfworker run --watch --inspect src/index.ts",
+    "build": "cfworker build src/index.ts",
+    "deploy": "cfworker deploy --name utteranc-es --route 'api.utteranc.es/*' src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/utterance/utterances-oauth"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@cfworker/dev": "^1.0.11",
+    "typescript": "^3.7.5"
+  }
+}
