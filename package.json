@@ -1,16 +1,16 @@
 {
-  "name": "utterances-oauth",
+  "name": "beaudar-oauth",
   "version": "0.1.0",
-  "description": "GitHub OAuth server for utterances",
+  "description": "GitHub OAuth server for beaudar",
   "main": "dist/index.js",
   "scripts": {
     "start": "cfworker run --watch --inspect src/index.ts",
     "build": "cfworker build src/index.ts",
-    "deploy": "cfworker deploy --name utteranc-es --route 'api.utteranc.es/*' src/index.ts"
+    "deploy": "cfworker deploy --name beaudar --route 'api.beaudar.es/*' src/index.ts"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/utterance/utterances-oauth"
+    "url": "https://github.com/beaudar/beaudar-oauth"
   },
   "license": "MIT",
   "devDependencies": {
