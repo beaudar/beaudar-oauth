@@ -116,7 +116,7 @@ async function authorizedRequestHandler(search: URLSearchParams) {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
-      'User-Agent': 'utterances'
+      'User-Agent': 'beaudar'
     }
   };
 
@@ -134,7 +134,7 @@ async function authorizedRequestHandler(search: URLSearchParams) {
   }
 
   const url = new URL(returnUrl);
-  url.searchParams.set('utterances', accessToken);
+  url.searchParams.set('beaudar', accessToken);
 
   return new Response(undefined, {
     status: 302,
@@ -179,7 +179,7 @@ async function postIssueRequestHandler(path: string, search: URLSearchParams, fe
     method: 'GET',
     headers: {
       'Authorization': authorization,
-      'User-Agent': 'utterances'
+      'User-Agent': 'beaudar'
     }
   };
 
@@ -197,7 +197,7 @@ async function postIssueRequestHandler(path: string, search: URLSearchParams, fe
     method: 'POST',
     headers: {
       'Authorization': 'token ' + settings.bot_token,
-      'User-Agent': 'utterances',
+      'User-Agent': 'beaudar',
     },
     body: request.body
   };
@@ -209,7 +209,7 @@ async function postIssueRequestHandler(path: string, search: URLSearchParams, fe
         method: 'POST',
         headers: {
           'Authorization': authorization,
-          'User-Agent': 'utterances',
+          'User-Agent': 'beaudar',
           'Accept': 'application/vnd.github.symmetra-preview+json'
         },
         body: JSON.stringify({ labels: [search.get('label')] })
