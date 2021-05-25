@@ -4,5 +4,4 @@ export const settings = {
   state_password: process.env.STATE_PASSWORD!,
   bot_token: process.env.BOT_TOKEN!,
   origins: process.env.ORIGINS!.split(",").map((x) => x.trim()),
-  webhook_secret: process.env.WEBHOOK_SECRET!,
 };
