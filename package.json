@@ -14,7 +14,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@cfworker/dev": "^1.0.11",
-    "typescript": "^3.7.5"
+    "@cfworker/dev": "^1.6.11",
+    "@types/node": "^15.6.1",
+    "typescript": "^4.2.4"
   }
 }
