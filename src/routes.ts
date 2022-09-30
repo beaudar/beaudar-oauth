@@ -40,11 +40,7 @@ async function routeRequest(fetchEvent: FetchEvent) {
     request.method === "POST" &&
     /^\/repos\/[\w-]+\/[\w-.]+\/issues$/i.test(pathname)
   ) {
-    const response = await postIssueRequestHandler(
-      pathname,
-      search,
-      fetchEvent
-    );
+    const response = await postIssueRequestHandler(pathname, fetchEvent);
     addCorsHeaders(response, settings.origins, request.headers.get("origin"));
     return response;
   } else {
@@ -190,11 +186,7 @@ async function tokenRequestHandler(request: Request) {
   });
 }
 
-async function postIssueRequestHandler(
-  path: string,
-  search: URLSearchParams,
-  fetchEvent: FetchEvent
-) {
+async function postIssueRequestHandler(path: string, fetchEvent: FetchEvent) {
   const request = fetchEvent.request;
   const authorization = request.headers.get("authorization");
 
@@ -232,8 +224,10 @@ async function postIssueRequestHandler(
   };
   try {
     const response = await fetch(`https://api.github.com${path}`, init);
+    const { labels } = JSON.parse(`${request.body}`);
     const issue = await response.json();
-    if (search.has("label")) {
+
+    if (labels && labels.length > 0) {
       const labelsInit = {
         method: "POST",
         headers: {
@@ -241,7 +235,7 @@ async function postIssueRequestHandler(
           "User-Agent": "beaudar",
           Accept: "application/vnd.github.symmetra-preview+json",
         },
-        body: JSON.stringify({ labels: [search.get("label")] }),
+        body: JSON.stringify({ labels }),
       };
       fetchEvent.waitUntil(
         fetch(
