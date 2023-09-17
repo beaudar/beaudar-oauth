@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cfworker run --watch --inspect src/index.ts",
     "build": "cfworker build src/index.ts",
-    "deploy": "cfworker deploy --name beaudar --route 'api.lipk.org/*' src/index.ts"
+    "deploy": "cfworker deploy --name beaudar --route 'beaudar-api.lipk.org/*' src/index.ts"
   },
   "repository": {
     "type": "git",
